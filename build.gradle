@@ -5,6 +5,7 @@ plugins {
     id 'eclipse'
     id 'com.palantir.docker' version '0.25.0'
     id 'com.palantir.docker-run' version '0.25.0'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
 repositories {
@@ -34,13 +35,17 @@ jar {
     }
 }
 
+shadowJar {
+    archiveFileName = "${project.name}.jar"
+}
+
 docker {
     name "${project.name}:${project.version}"
     dockerfile file('Dockerfile')
     copySpec.from('build/libs').into('build/libs')
     noCache true
 }
-docker.dependsOn(build)
+docker.dependsOn(shadowJar)
 
 dockerRun {
     name project.name
