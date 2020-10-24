@@ -45,7 +45,6 @@ docker {
     copySpec.from('build/libs').into('build/libs')
     noCache true
 }
-docker.dependsOn(shadowJar)
 
 dockerRun {
     name project.name

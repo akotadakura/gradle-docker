@@ -25,7 +25,10 @@ $ git clone git@github.com:akotadakura/gradle-docker.git
 #### 2. イメージ作成実行
 ```shell script
 $ cd 'cloned path'
-$ gradlew docker
+(mac)$ ./gradlew shadowJar
+(mac)$ ./gradlew docker
+(win)$ .\gradlew shadowJar
+(win)$ .\gradlew docker
 ``` 
 
 #### 3. コンテナ実行
