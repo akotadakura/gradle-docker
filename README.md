@@ -40,7 +40,7 @@ $ docker rmi gradle-docker:[現バージョン]
 とはいえ、ラッパーも格納しているため、PCにインストールは不要。
 
 ## Javaについて
-バージョンは11 LTS。Amazon correttoである(Oracleざまぁw)。  
+バージョンは11 LTS。Amazon correttoである。  
 とはいえ実行環境はContainerであり、Gradleが動けばバージョンはなんでもよかろう、と。
 
 ## コンテナについて
