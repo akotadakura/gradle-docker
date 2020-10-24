@@ -1,3 +1,6 @@
+import com.github.sherter.googlejavaformatgradleplugin.GoogleJavaFormat
+import com.github.sherter.googlejavaformatgradleplugin.VerifyGoogleJavaFormat
+
 plugins {
     id 'java'
     id 'application'
@@ -7,6 +10,7 @@ plugins {
     id 'com.palantir.docker' version '0.25.0'
     id 'com.palantir.docker-run' version '0.25.0'
     id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'com.github.sherter.google-java-format' version '0.9'
 }
 
 repositories {
@@ -77,4 +81,17 @@ jacocoTestReport {
         csv.enabled false
         html.destination file("${buildDir}/jacocoHtml")
     }
+}
+
+googleJavaFormat {
+    toolVersion = '1.8'
+    options style: 'GOOGLE'
+}
+
+task format(type: GoogleJavaFormat){
+  //Options
+}
+
+task verifyFormat(type: VerifyGoogleJavaFormat) {
+  //Options
 }
