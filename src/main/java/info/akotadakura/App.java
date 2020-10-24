@@ -2,11 +2,11 @@ package info.akotadakura;
 
 import static info.akotadakura.utils.SampleUtil.sampleText;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import info.akotadakura.utils.models.SampleModel;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class App {
-  private static final Logger logger = LoggerFactory.getLogger(App.class);
 
   public String getGreeting() {
     return "Hello world.";
@@ -14,7 +14,9 @@ public class App {
 
   public static void main(String[] args) {
     System.out.println(new App().getGreeting());
-    logger.info("json logging: {}", "succeed!!");
-    logger.info("Ghost Prototype {}", sampleText(true));
+    log.info("json logging: {}", "succeed!!");
+    log.info("Ghost Prototype {}", sampleText(true));
+    SampleModel model = new SampleModel("Per Nilsson", "guitar");
+    System.out.println(model.toString());
   }
 }

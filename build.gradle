@@ -26,9 +26,13 @@ dependencies {
   implementation 'ch.qos.logback:logback-core:1.2.+'
   implementation 'ch.qos.logback:logback-classic:1.2.+'
   implementation 'net.logstash.logback:logstash-logback-encoder:6.4'
+  compileOnly 'org.projectlombok:lombok:1.18.16'
+  annotationProcessor 'org.projectlombok:lombok:1.18.16'
 
   testImplementation 'junit:junit:4.13'
   testImplementation 'org.hamcrest:hamcrest-library:1.3'
+  testCompileOnly 'org.projectlombok:lombok:1.18.16'
+  testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
 }
 
 application {

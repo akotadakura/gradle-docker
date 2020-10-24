@@ -1,6 +1,7 @@
 package info.akotadakura.utils;
 
 public class SampleUtil {
+
   public static String sampleText(boolean bool) {
     StringBuilder builder = new StringBuilder();
     if (bool) {
