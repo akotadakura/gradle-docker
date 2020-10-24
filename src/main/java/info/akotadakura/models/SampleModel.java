@@ -1,4 +1,4 @@
-package info.akotadakura.utils.models;
+package info.akotadakura.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -2,7 +2,7 @@ package info.akotadakura;
 
 import static info.akotadakura.utils.SampleUtil.sampleText;
 
-import info.akotadakura.utils.models.SampleModel;
+import info.akotadakura.models.SampleModel;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
