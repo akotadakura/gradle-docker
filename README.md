@@ -28,12 +28,27 @@ $ cd 'cloned path'
 (mac)$ ./gradlew docker
 (win)$ .\gradlew docker
 ``` 
+なお、dockerタスクを実行すると、  
+本チャンのimage作成が入る前にtest, jar buildがもれなくついてくる(当たり前だよなぁ)
 
 #### 3. コンテナ実行
 ```shell script
-$ gradlew dockerRun
+(mac)$ ./gradlew dockerRun
+(win)$ .\gradlew dockerRun
 # 終わったらイメージの削除
 $ docker rmi gradle-docker:[現バージョン]
+```
+
+#### 4. コードフォーマッティング
+本来は、特にフォーマットチェックもテスト前に入れるほうがいいが、  
+いったんはlinter含めて様子を見るとしよう。
+```shell script
+# format済み？のチェック
+(mac)$ ./gradlew verifyFormat
+(win)$ .\gradlew verifyFormat
+# formatだオラーン
+(mac)$ ./gradlew format
+(win)$ .\gradlew format
 ```
 
 ## Gradleについて
@@ -42,10 +57,11 @@ $ docker rmi gradle-docker:[現バージョン]
 
 ## Javaについて
 バージョンは11 LTS。Amazon correttoである。  
-とはいえ実行環境はContainerであり、Gradleが動けばバージョンはなんでもよかろう、と。
+とはいえ実行環境はContainerであり、Gradleが動けばバージョンはなんでもよかろう、と。  
+IDEではランタイム選ぶから、まぁ何かのjava 11入れとけば間違いない。
 
 ## コンテナについて
-AWS amazonlinuxのイメージ使用。  
+AWS amazonlinuxのイメージ使用  
 corretto のインストールが捗る。  
 とはいえ、イメージサイズが700MBオーバーなのがなぁ...  
 いっそubuntuでcorretto使うのもありかと思っている。サイズには圧倒的利がある。
