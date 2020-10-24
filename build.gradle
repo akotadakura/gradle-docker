@@ -42,6 +42,7 @@ jar {
 
 shadowJar {
     archiveFileName = "${project.name}.jar"
+    finalizedBy tasks.docker
 }
 
 docker {
@@ -49,6 +50,7 @@ docker {
     dockerfile file('Dockerfile')
     copySpec.from('build/libs').into('build/libs')
     noCache true
+    dependsOn tasks.shadowJar
 }
 
 dockerRun {
