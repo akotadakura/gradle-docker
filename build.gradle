@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'jacoco'
     id 'idea'
     id 'eclipse'
     id 'com.palantir.docker' version '0.25.0'
@@ -23,6 +24,7 @@ dependencies {
     implementation 'net.logstash.logback:logstash-logback-encoder:6.4'
 
     testImplementation 'junit:junit:4.13'
+    testImplementation 'org.hamcrest:hamcrest-library:1.3'
 }
 
 application {
@@ -42,6 +44,7 @@ jar {
 
 shadowJar {
     archiveFileName = "${project.name}.jar"
+    dependsOn jacocoTestReport
     finalizedBy tasks.docker
 }
 
@@ -58,4 +61,20 @@ dockerRun {
     image "${project.name}:${project.version}"
     daemonize false
     clean true
+}
+
+tasks.test.finalizedBy(jacocoTestReport)
+
+jacoco {
+    toolVersion = '0.8.5'
+}
+
+jacocoTestReport {
+    dependsOn test
+    finalizedBy shadowJar
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
 }
