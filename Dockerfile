@@ -1,8 +1,4 @@
-FROM amazonlinux:latest
-
-RUN yum update -y &&\
-    yum upgrade -y &&\
-    yum install java-11-amazon-corretto-headless -y
+FROM amazoncorretto/amazoncorretto:11-alpine-jdk
 
 COPY ./build/libs/gradle-docker.jar /tmp/app.jar
 ENTRYPOINT ["java", "-jar", "/tmp/app.jar"]
