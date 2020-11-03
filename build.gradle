@@ -99,3 +99,7 @@ task format(type: GoogleJavaFormat){
 task verifyFormat(type: VerifyGoogleJavaFormat) {
   //Options
 }
+
+task dockerRmi (type: Exec) {
+  commandLine('docker', 'rmi', "${project.name}:${project.version}")
+}
